@@ -6,8 +6,8 @@ This module wraps the official F5 [failover](https://github.com/F5Networks/f5-aw
 1. Clone this repository:
 
 ```bash
-git clone --recurse-submodules __
-cd __
+git clone --recurse-submodules https://github.com/m-bers/f5-aws-cloudformation-v2-tf.git
+cd f5-aws-cloudformation-v2-tf
 ```
 
 2. Create a `terraform.tfvars` file with your parameters for the template--use [this](https://github.com/F5Networks/f5-aws-cloudformation-v2/tree/main/examples/failover#template-input-parameters) as a guide. 
@@ -28,7 +28,28 @@ Similarly, you can use this module to set your own administrator password, rathe
 
 The original CloudFormation template requires that you set `restrictedSrcAddressMgmt` and `restrictedSrcAddressApp`. By default, this module will automatically retrieve your client's public IP address and use that. You can override this behavior by setting the parameters to another value. 
 
-3. Deploy the module:
+3. (optional) Make edits to the CloudFormation template before deployment.
+
+For example, the AMI IDs for the `application` module are broken. This module allows you to override them with your own values. e.g.:
+
+**From:**
+```yaml
+# f5-aws-cloudformation-v2/examples/modules/application/application.yaml
+Mappings:
+  imageRegionMap:
+    us-east-1:
+      AMI: ami-00543d76373f96fe7
+```
+**To:**
+```yaml
+# f5-aws-cloudformation-v2/examples/modules/application/application.yaml
+Mappings:
+  imageRegionMap:
+    us-east-1:
+      AMI: ami-0a73e96a849c232cc
+```
+
+4. Deploy the module:
 
 ```bash
 terraform plan -out "tfplan"
