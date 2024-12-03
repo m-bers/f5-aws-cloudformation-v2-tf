@@ -19,7 +19,7 @@ cd f5-aws-cloudformation-v2-tf
 * s3BucketName
 * bigIpRuntimeInitConfig01
 * bigIpRuntimeInitConfig02
-* s3BucketRegion
+* s3BucketRegion (this is the region for the whole module--uses `us-east-1` by default)
 
 The ability to supply your own values has been retained for compatibility with the original template. But you shouldn't include these parameters unless you want to set up bucket access yourself or if you have another place to host the template files. 
 
