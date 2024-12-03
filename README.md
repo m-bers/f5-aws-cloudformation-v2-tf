@@ -62,3 +62,4 @@ terraform apply "tfplan"
 * Restrict S3 access to `bigIpInstanceProfile`
 * Set up the `failover-existing-network` template
 * Split up declarative onboarding for more consistency
+* Git tutorial for maintaining changes to both repo and submodule. 
