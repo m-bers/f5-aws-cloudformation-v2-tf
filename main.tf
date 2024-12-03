@@ -16,7 +16,6 @@ locals {
   s3BucketName             = var.s3BucketName != null ? var.s3BucketName : aws_s3_bucket.bigip_failover_cft.bucket
   sshKey                   = var.sshKey != null ? var.sshKey : aws_key_pair.bigip_failover_ssh_key[0].key_name
   uniqueString             = var.uniqueString != null ? var.uniqueString : "${random_string.uniqueString.result}"
-
   # Other locals
   s3_url = "https://${local.bigip_failover_cft}.s3.${var.s3BucketRegion}.amazonaws.com"
   bigip_failover_cft = "${local.uniqueString}-bigip-failover-cft"
@@ -162,7 +161,7 @@ resource "aws_s3_bucket_policy" "bigip_failover_policy" {
 resource "aws_key_pair" "bigip_failover_ssh_key" {
   count = var.sshKey == null ? 1 : 0
   key_name   = "bigip_failover_ssh_key-${random_string.uniqueString.result}"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file(var.big_ip_ssh_public_key)
   tags       = local.common_tags
 }
 

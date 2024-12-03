@@ -1,5 +1,11 @@
 
-variable "big_ip_password" {}
+variable "big_ip_password" {
+  default = null
+}
+
+variable "big_ip_ssh_public_key" {
+  default = null
+}
 
 # F5 Runtime Init
 
