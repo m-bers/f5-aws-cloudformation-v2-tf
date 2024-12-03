@@ -12,6 +12,8 @@ cd f5-aws-cloudformation-v2-tf
 
 2. Create a `terraform.tfvars` file with your parameters for the template--use [this](https://github.com/F5Networks/f5-aws-cloudformation-v2/tree/main/examples/failover#template-input-parameters) as a guide. 
 
+Make sure you set `s3BucketRegion` to something other than `us-east-1` if you are deploying in a different region.
+
 > [!NOTE] 
 > In order to allow you to fully edit the source CloudFormation template, this project takes over several of the input parameters if you don't supply your own value:
 
@@ -19,7 +21,6 @@ cd f5-aws-cloudformation-v2-tf
 * s3BucketName
 * bigIpRuntimeInitConfig01
 * bigIpRuntimeInitConfig02
-* s3BucketRegion (this is the region for the whole module--uses `us-east-1` by default)
 
 The ability to supply your own values has been retained for compatibility with the original template. But you shouldn't include these parameters unless you want to set up bucket access yourself or if you have another place to host the template files. 
 
