@@ -1,0 +1,18 @@
+schemaVersion: 1.0.0
+class: Cloud_Failover
+environment: aws
+controls:
+  class: Controls
+  logLevel: silly
+externalStorage:
+  encryption:
+    serverSide:
+      enabled: true
+      algorithm: AES256
+  scopingTags:
+    f5_cloud_failover_label: "{{{FAILOVER_TAG}}}"
+failoverAddresses:
+  enabled: true
+  scopingTags:
+    f5_cloud_failover_label: "{{{FAILOVER_TAG}}}"
+  requireScopingTags: false

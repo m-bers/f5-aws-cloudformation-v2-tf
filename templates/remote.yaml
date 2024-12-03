@@ -1,0 +1,5 @@
+  - name: REMOTE_HOST
+    type: tag
+    tagProvider:
+      environment: aws
+      key: bigIpPeerAddr
